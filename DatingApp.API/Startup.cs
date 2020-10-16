@@ -55,6 +55,7 @@ namespace DatingApp.API
       // Repository
       services.AddScoped<IAuthRepository, AuthRepository>();
       services.AddScoped<IDatingRepository, DatingRepository>();
+      services.AddScoped<LogUserActivity>();
 
       // Swagger
       services.AddSwaggerGen(c =>
@@ -115,7 +116,7 @@ namespace DatingApp.API
       app.UseAuthorization();
       app.UseEndpoints(endpoints =>
       {
-        endpoints.MapDefaultControllerRoute(); 
+        endpoints.MapDefaultControllerRoute();
       });
       app.UseSwagger();
       app.UseSwaggerUI(c =>

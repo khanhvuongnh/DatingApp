@@ -33,7 +33,7 @@ import { MemberListResolver } from './_resolvers/member-list.resolver';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
-
+import { DateAgoPipe } from './_pipes/pipes/date-ago.pipe';
 
 export function tokenGetter(): string {
   return localStorage.getItem('token');
@@ -51,7 +51,8 @@ export function tokenGetter(): string {
     MemberCardComponent,
     MemberDetailComponent,
     MemberEditComponent,
-    PhotoEditorComponent
+    PhotoEditorComponent,
+    DateAgoPipe
   ],
   imports: [
     BrowserModule,
