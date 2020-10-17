@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { User } from 'src/app/_models/user';
 import { AlertifyService } from 'src/app/_services/alertify.service';
 import { UserService } from 'src/app/_services/user.service';
@@ -10,6 +11,7 @@ import { UserService } from 'src/app/_services/user.service';
   styleUrls: ['./member-detail.component.scss']
 })
 export class MemberDetailComponent implements OnInit {
+  @ViewChild('memberTabs', { static: true }) memberTabs: TabsetComponent;
   user: User;
   galleryImages: Array<object> = [];
 
@@ -25,6 +27,11 @@ export class MemberDetailComponent implements OnInit {
     });
 
     this.pushImages();
+
+    this.route.queryParams.subscribe(params => {
+      const selectedTab = params.tab;
+      this.memberTabs.tabs[selectedTab > 0 ? selectedTab : 0].active = true;
+    });
   }
 
   pushImages(): void {
@@ -36,5 +43,9 @@ export class MemberDetailComponent implements OnInit {
 
       this.galleryImages.push(obj);
     }
+  }
+
+  selectTab(tabId: number): void {
+    this.memberTabs.tabs[tabId].active = true;
   }
 }

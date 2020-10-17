@@ -23,6 +23,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { MemberCardComponent } from './members/member-card/member-card.component';
 import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
+import { MemberMessagesComponent } from './members/member-messages/member-messages.component';
 
 import { AuthService } from './_services/auth.service';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
@@ -37,6 +38,7 @@ import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { DateAgoPipe } from './_pipes/pipes/date-ago.pipe';
 import { ListsResolver } from './_resolvers/lists.resolver';
+import { MessagesResolver } from './_resolvers/messages.resolver';
 
 export function tokenGetter(): string {
   return localStorage.getItem('token');
@@ -55,6 +57,7 @@ export function tokenGetter(): string {
     MemberDetailComponent,
     MemberEditComponent,
     PhotoEditorComponent,
+    MemberMessagesComponent,
     DateAgoPipe
   ],
   imports: [
@@ -89,6 +92,7 @@ export function tokenGetter(): string {
     MemberListResolver,
     MemberEditResolver,
     ListsResolver,
+    MessagesResolver,
     PreventUnsavedChanges
   ],
   bootstrap: [AppComponent]
